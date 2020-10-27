@@ -1,0 +1,1 @@
+typedef EventHandler = void Function();
