@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:monumentum/components/control_bar.dart';
-import 'package:monumentum/components/record_button.dart';
+import 'package:monumentum/components/control_bar/control_bar.dart';
+import 'package:monumentum/components/control_bar/time_record_button.dart';
 import 'package:monumentum/types/timestamp.dart';
 import 'package:monumentum/components/timestamp_list.dart';
 
@@ -40,10 +40,10 @@ class Home extends StatelessWidget {
       ]
     ),
     bottomNavigationBar: ControlBar(
-      onEnd: _onEnd,
-      onBegin: _onBegin,
+      onStop: _onEnd,
+      onStart: _onBegin,
       onFinalize: _onFinalize,
-      isDayInProgress: true,
+      isRunning: true,
     ),
     floatingActionButton: RecordButton(
       onRecord: _onRecord,
