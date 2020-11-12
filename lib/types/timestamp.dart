@@ -1,9 +1,14 @@
 class Timestamp {
-  Timestamp({
-    this.transcript,
-    this.time,
+  const Timestamp({
+    this.description,
+    this.startTime,
+    this.stopTime,
   });
 
-  final String transcript;
-  final DateTime time;
+  final String description;
+  final DateTime startTime;
+  final DateTime stopTime;
+
+  Duration duration() =>
+    stopTime.difference(startTime);
 }

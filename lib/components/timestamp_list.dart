@@ -1,28 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:monumentum/models/history_model.dart';
 import 'package:monumentum/types/timestamp.dart';
 import 'package:monumentum/components/timestamp_tile.dart';
+import 'package:provider/provider.dart';
 
 class TimestampList extends StatelessWidget {
-  TimestampList({
-    @required this.startTime,
-    @required this.timestamps,
-  });
+  @override Widget build(BuildContext context) => Consumer<HistoryModel>(
+    builder: (context, history, child) => _getListView(
+      timestamps: history.timestamps
+    )
+  );
 
-  final DateTime startTime;
-  final List<Timestamp> timestamps;
-
-  @override
-  Widget build(BuildContext context) => ListView.builder(
+  Widget _getListView({ List<Timestamp> timestamps }) => ListView.builder(
     itemCount: timestamps.length,
-    itemBuilder: _buildTimestampTile,
+    itemBuilder: (context, index) => TimestampTile(
+      timestamp: timestamps[index],
+    ),
   );
-
-  Widget _buildTimestampTile(BuildContext context, int index) => TimestampTile(
-    startTime: _getStartTime(index),
-    timestamp: timestamps[index],
-  );
-
-  DateTime _getStartTime(int index) => index != 0
-    ? timestamps[index - 1].time
-    : startTime;
 }
