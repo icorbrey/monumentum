@@ -4,4 +4,7 @@ const en = {
   'tooltip-button-record': 'Record an event',
   'tooltip-button-record-disabled': 'Start the timer to record events',
   'tooltip-button-finalize': 'Finalize your time',
+  'tooltip-button-delete': 'Delete this event',
+  'hint-event-name': 'What did you do?',
+  'page-event-new': 'Create New Event',
 };

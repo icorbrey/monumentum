@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:monumentum/models/history_model.dart';
+import 'package:monumentum/models/locale_model.dart';
 import 'package:monumentum/types/timestamp.dart';
+import 'package:provider/provider.dart';
 
 class TimestampTile extends StatelessWidget {
   TimestampTile({
@@ -7,15 +10,18 @@ class TimestampTile extends StatelessWidget {
   });
 
   final Timestamp timestamp;
-  
+
   @override
   Widget build(BuildContext context) => ListTile(
     title: Text(timestamp.description),
     subtitle: Text(_getDuration()),
     visualDensity: VisualDensity.compact,
-    trailing: IconButton(
-      icon: Icon(Icons.more_horiz),
-      onPressed: () {},
+    trailing: Consumer2<LocaleModel, HistoryModel>(
+      builder: (context, locale, history, child) => IconButton(
+        icon: Icon(Icons.delete),
+        tooltip: locale.strings['tooltip-button-delete'],
+        onPressed: () => history.deleteTimestamp(timestamp.id),
+      ),
     ),
   );
 

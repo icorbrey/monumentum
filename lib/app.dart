@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:monumentum/views/home.dart';
+import 'package:monumentum/views/home_view.dart';
 
 class App extends StatelessWidget {
   final title = 'Monumentum';
@@ -12,6 +12,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     title: title,
     theme: theme,
-    home: Home(title),
+    home: HomeView(title),
   );
 }
